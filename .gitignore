@@ -1,0 +1,20 @@
+# Python environments and cache
+__pycache__/
+*.py[cod]
+*.so
+venv/
+.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# ML Data and Models
+*.csv
+*.tsv
+*.dat
+*.pkl
+*.h5
+*.onnx
+*.pb
+data/
+models/
