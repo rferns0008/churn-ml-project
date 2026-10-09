@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: churn-model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: churn-model
+  template:
+    metadata:
+      labels:
+        app: churn-model
+    spec:
+      containers:
+      - name: churn-api
+        image: rferns/churn-model:v1 # Replace with your actual image URI if using ECR/Docker Hub
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "100m" # 1/10th of a core
+            memory: "256Mi"
+          limits:
+            cpu: "250m" # 1/4th of a core
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: churn-model-service
+spec:
+  selector:
+    app: churn-model
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: LoadBalancer
