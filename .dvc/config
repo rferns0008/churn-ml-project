@@ -1,0 +1,5 @@
+[core]
+    remote = b2-remote
+['remote "b2-remote"']
+    url = s3://churn-ml-data/churn-model
+    endpointurl = https://s3.eu-central-003.backblazeb2.com
